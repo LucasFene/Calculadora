@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversão de Temperatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="number"], select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        div {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+<h1>Conversão de Temperatura</h1>
+<form action="/calculadora" method="post">
+    <input type="number" step="0.01" name="num1" required>
+    <select name="sinal" required>
+        <option value="Kelvin">Kelvin</option>
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+
+    <p>Convert to</p>
+    <select name="para" required>
+        <option value="Kelvin">Kelvin</option>
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+
+    <button type="submit">Converter</button>
+</form>
+<div th:if="${result != null}">
+    <h2>Resultado: <span th:text="${result}"></span></h2>
+</div>
+</body>
+</html>
